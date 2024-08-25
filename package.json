@@ -1,5 +1,5 @@
 {
-  "name": "todo-mvc-auth-local",
+  "name": "apnea-together",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
@@ -7,7 +7,7 @@
     "start": "nodemon server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Chris Nelson",
   "license": "MIT",
   "dependencies": {
     "bcrypt": "^5.0.1",
@@ -20,9 +20,12 @@
     "mongodb": "^3.6.5",
     "mongoose": "^5.12.3",
     "morgan": "^1.10.0",
-    "nodemon": "^2.0.7",
     "passport": "^0.6.0",
     "passport-local": "^1.0.0",
+    "socket.io": "^4.7.5",
     "validator": "^13.6.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.4"
   }
 }

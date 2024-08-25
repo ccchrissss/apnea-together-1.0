@@ -10,6 +10,13 @@ const connectDB = require('./config/database')
 const mainRoutes = require('./routes/main')
 const todoRoutes = require('./routes/todos')
 
+const { createServer } = require('node:http')
+const { join } = require('node:path')
+const { Server } = require('socket.io')
+
+const server = createServer(app)
+const io = new Server(server)
+
 require('dotenv').config({path: './config/.env'})
 
 // Passport config
@@ -40,7 +47,11 @@ app.use(flash())
   
 app.use('/', mainRoutes)
 app.use('/todos', todoRoutes)
+
+io.on('connection', socket => {
+  console.log('a user connected')
+})
  
-app.listen(process.env.PORT, ()=>{
+server.listen(process.env.PORT, ()=>{
     console.log('Server is running, you better catch it!')
 })    
