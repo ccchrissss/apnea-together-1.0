@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apnea Timer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <section id="whole-thing">
+        <section id="intro">
+            <h1>Apnea Timer</h1>
+            <p id="autoplay-warning">Please make sure to allow autoplay in your browser for this page. Otherwise the timer's beeps will not be heard.</p>
+        </section>
+
+        <section id="clock-display">
+            <p id="countdown">0:00</p>
+
+            <div class="timer-btns">
+                <button id="start-timer">Start Timer</button>
+                <!-- <br /> -->
+                <button id="stop-timer">Stop Timer</button> 
+                <button id="clear-timer">Clear Timer</button>
+                <button id="reset-timer">Reset To Last Time</button>
+            </div>
+        </section>
+
+        <section id="inputs-and-preset-btns">
+            <div class="inputs">
+                <input id="minutes-input" type="text" placeholder="Minutes">
+                <button id="set-minutes">Set</button>
+                <input id="seconds-input" type="text" placeholder="Seconds">
+                <button id="set-seconds">Set</button>
+            </div>
+            <div class="preset-btns-big-box">
+                <div class="preset-btns-sml-box">
+                    <button id="set-10-min-10-sec">10 min 10 sec</button>
+                    <button id="set-1-min">1 min</button>
+                    <button id="set-20-sec">20 sec</button>
+                </div>
+            </div>
+        </section>
+    </section>
+    <!-- <button onclick="play()">Play Audio</button> -->
+
+    <script src="main.js"></script>
+</body>
+</html>
