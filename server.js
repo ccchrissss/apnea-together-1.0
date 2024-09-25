@@ -9,6 +9,7 @@ const logger = require('morgan')
 const connectDB = require('./config/database')
 const mainRoutes = require('./routes/main')
 const todoRoutes = require('./routes/todos')
+const helloRoute = require('./routes/hello')
 
 const { createServer } = require('node:http')
 const { join } = require('node:path')
@@ -47,6 +48,7 @@ app.use(flash())
   
 app.use('/', mainRoutes)
 app.use('/todos', todoRoutes)
+app.use('/hello', helloRoute)
 
 io.on('connection', socket => {
   console.log('a user connected')
