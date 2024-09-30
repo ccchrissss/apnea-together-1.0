@@ -1,10 +1,94 @@
-h1{
-    color: red;
+h1 {
+    font-size: 2.5rem;
+    margin: 1rem;
 }
+
+h2 {
+    font-size: 1.8rem;
+}
+
+body {
+    /* background: black; */
+    font-family: roboto;
+    margin: 1rem;
+}
+
+#whole-thing {
+    width: 50%;
+}
+
+p {
+    width: 50%;
+}
+
+p#countdown {
+    background-color: gray;
+    display: inline-flex;
+    width: 13rem;
+    height: 5rem;
+    font-size: 5rem;
+    font-family: roboto;
+    align-items: center;
+    justify-content: center;
+    margin: 3rem;
+}
+
+#intro {
+    margin: 1rem;
+}
+
+#clock-display {
+    display: flex;
+}
+
+#clock-display > * {
+    margin: 1rem;
+}
+
+#clock-display > .timer-btns {
+    margin: 2rem;
+}
+
+.timer-btns {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    row-gap: 10px;
+}
+
+#inputs-and-preset-btns {
+    margin: 1rem;
+    display: flex;
+}
+
+.inputs {
+    display: flex;
+    flex-basis: 50%;
+    flex-wrap: wrap;
+    row-gap: 10px;
+    column-gap: 5px;
+}
+
+.preset-btns-big-box {
+    display: flex;
+}
+
+.preset-btns-sml-box {
+    display: flex;
+    column-gap: 5px;
+}
+
+
+
+
+
+
+
 .completed{
     text-decoration: line-through;
     color: gray;
 }
+
 .not{
     text-decoration: underline;
 }
