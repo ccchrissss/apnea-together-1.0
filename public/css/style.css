@@ -13,6 +13,10 @@ body {
     margin: 1rem;
 }
 
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~
+        Basic Timer 
+   ~~~~~~~~~~~~~~~~~~~~~~~~ */
 #whole-thing {
     width: 50%;
 }
@@ -31,6 +35,10 @@ p#countdown {
     align-items: center;
     justify-content: center;
     margin: 3rem;
+}
+
+#autoplay-warning {
+    font-style: italic;
 }
 
 #intro {
