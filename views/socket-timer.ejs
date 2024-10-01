@@ -20,15 +20,9 @@
             <a href="/hello"> Hello</a>
             <a href="/socket-timer"> Socket Timer</a>
             
-            <p id="autoplay-warning">Please make sure to allow autoplay in your browser for this page. Otherwise the timer's beeps will not be heard.</p>
-            <h3>Basic Timer</h3>
+            <!-- <p id="autoplay-warning">Please make sure to allow autoplay in your browser for this page. Otherwise the timer's beeps will not be heard.</p>
+            <h3>Soccket Timer</h3>
 
-        <section id="clock-display">
-            <p id="countdown">0:00</p>
-
-            <div class="timer-btns">
-                <button id="start-timer">Start Timer</button>
-                <!-- <br /> -->
                 <button id="stop-timer">Stop Timer</button> 
                 <button id="clear-timer">Clear Timer</button>
                 <button id="reset-timer">Reset To Last Time</button>
@@ -51,8 +45,11 @@
             </div>
         </section>
     </section>
-    <!-- <button onclick="play()">Play Audio</button> -->
 
-    <script src="js/basic-timer.js"></script>
+    <script src="js/basic-timer.js"></script> -->
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        const socket = io()
+    </script>
 </body>
 </html>
