@@ -11,6 +11,7 @@ const mainRoutes = require('./routes/main')
 const todoRoutes = require('./routes/todos')
 const helloRoutes = require('./routes/hello')
 const basicTimerRoutes = require('./routes/basic-timer')
+const socketTimerRoutes = require('./routes/socket-timer')
 
 const { createServer } = require('node:http')
 const { join } = require('node:path')
@@ -51,6 +52,7 @@ app.use('/', mainRoutes)
 app.use('/todos', todoRoutes)
 app.use('/hello', helloRoutes)
 app.use('/basic-timer', basicTimerRoutes)
+app.use('/socket-timer', socketTimerRoutes)
 
 io.on('connection', socket => {
   console.log('a user connected')

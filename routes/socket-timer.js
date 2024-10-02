@@ -1,9 +1,9 @@
 const express = require('express')
 const router = express.Router()
-const basicTimerController = require('../controllers/basic-timer')
+const socketTimerController = require('../controllers/socket-timer')
 const homeController = require('../controllers/home')
 
-router.get('/', basicTimerController.getBasicTimer)
+router.get('/', socketTimerController.getSocketTimer)
 
 
 module.exports = router

@@ -41,9 +41,9 @@ p#countdown {
     font-style: italic;
 }
 
-#intro {
+/* #intro {
     margin: 1rem;
-}
+} */
 
 #clock-display {
     display: flex;
