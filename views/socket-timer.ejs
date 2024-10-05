@@ -10,14 +10,14 @@
     <style>
         body { margin: 0; padding-bottom: 3rem; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
   
-        #form { background: rgba(0, 0, 0, 0.15); padding: 0.25rem; position: fixed; bottom: 0; left: 0; right: 0; display: flex; height: 3rem; box-sizing: border-box; backdrop-filter: blur(10px); }
-        #input { border: none; padding: 0 1rem; flex-grow: 1; border-radius: 2rem; margin: 0.25rem; }
-        #input:focus { outline: none; }
-        #form > button { background: #333; border: none; padding: 0 1rem; margin: 0.25rem; border-radius: 3px; outline: none; color: #fff; }
+        #messages-form { background: rgba(0, 0, 0, 0.15); padding: 0.25rem; position: fixed; bottom: 0; left: 0; right: 0; display: flex; height: 3rem; box-sizing: border-box; backdrop-filter: blur(10px); }
+        #messages-input { border: none; padding: 0 1rem; flex-grow: 1; border-radius: 2rem; margin: 0.25rem; }
+        #messages-input:focus { outline: none; }
+        #messages-form > button { background: #333; border: none; padding: 0 1rem; margin: 0.25rem; border-radius: 3px; outline: none; color: #fff; }
   
-        #messages { list-style-type: none; margin: 0; padding: 0; }
-        #messages > li { padding: 0.5rem 1rem; }
-        #messages > li:nth-child(odd) { background: #efefef; }
+        #messages-ul { list-style-type: none; margin: 0; padding: 0; }
+        #messages-ul > li { padding: 0.5rem 1rem; }
+        #messages-ul > li:nth-child(odd) { background: #efefef; }
       </style>
 
 </head>
@@ -35,10 +35,22 @@
             <a href="/socket-timer"> Socket Timer</a>
             
             <h3>Socket Timer</h3>
+            <br />
+            <br />
 
-            <ul id="messages"></ul>
-            <form id="form" action="">
-              <input id="input" autocomplete="off" /><button>Send</button>
+            <h4>Current Room: </h4>
+            <h4 id="current-room-name"></h4>
+            <br />
+            <br />
+            
+            <form id="room-join-form" action="">
+                <input id="room-join-input" placeholder="Type in a room to join" autocomplete="off"/>
+                <button>Submit</button>
+            </form>
+
+            <ul id="messages-ul"></ul>
+            <form id="messages-form" action="">
+              <input id="messages-input" autocomplete="off" />  <button>Send</button>
             </form>
             
             <!-- <p id="autoplay-warning">Please make sure to allow autoplay in your browser for this page. Otherwise the timer's beeps will not be heard.</p>

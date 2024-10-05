@@ -1,16 +1,30 @@
 const socket = io()
 
-const form = document.getElementById('form');
-const input = document.getElementById('input');
-const messages = document.getElementById('messages')
+const messagesForm = document.querySelector('#messages-form');
+const messagesInput = document.querySelector('#messages-input');
+const messages = document.querySelector('#messages-ul')
 
-form.addEventListener('submit', (e) => {
+const roomJoinForm = document.querySelector('#room-join-form')
+const roomJoinInput = document.querySelector('#room-join-input')
+let currentRoomName = document.querySelector('#current-room-name')
+
+
+messagesForm.addEventListener('submit', (e) => {
   e.preventDefault();
-  if (input.value) {
-    socket.emit('chat message', input.value);
-    input.value = '';
+  if (messagesInput.value) {
+    socket.emit('chat message', messagesInput.value);
+    messagesInput.value = '';
   }
 });
+
+roomJoinForm.addEventListener('submit', e => {
+  e.preventDefault()
+
+  if (roomJoinInput.value) {
+    currentRoomName.innerText = roomJoinInput.value
+  }
+})
+
 
 socket.on('chat message', msg => {
   const item = document.createElement('li')
@@ -18,3 +32,4 @@ socket.on('chat message', msg => {
   messages.appendChild(item)
   window.scrollTo(0, document.body.scrollHeight)
 })
+
