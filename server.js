@@ -58,6 +58,9 @@ app.use('/socket-timer', socketTimerRoutes)
 
 io.on('connection', socket => {
   console.log('a user connected')
+  socket.on('disconnect', () => {
+    console.log('user disconnected')
+  })
 })
  
 server.listen(process.env.PORT, ()=>{
