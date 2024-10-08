@@ -7,6 +7,7 @@ const messages = document.querySelector('#messages-ul')
 const roomJoinForm = document.querySelector('#room-join-form')
 const roomJoinInput = document.querySelector('#room-join-input')
 let currentRoomName = document.querySelector('#current-room-name')
+let leaveCurrentRoom = document.querySelector('#leave-current-room')
 
 
 messagesForm.addEventListener('submit', (e) => {
@@ -20,9 +21,15 @@ messagesForm.addEventListener('submit', (e) => {
 roomJoinForm.addEventListener('submit', e => {
   e.preventDefault()
 
-  if (roomJoinInput.value) {
-    currentRoomName.innerText = roomJoinInput.value
-  }
+  socket.emit('join', 'desiredRoom')
+
+  // if (roomJoinInput.value) {
+  //   currentRoomName.innerText = roomJoinInput.value
+  // }
+})
+
+leaveCurrentRoom.addEventListener('click', () => {
+  socket.emit('leave', 'desiredRoom')
 })
 
 

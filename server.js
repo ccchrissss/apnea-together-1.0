@@ -66,6 +66,16 @@ io.on('connection', socket => {
     io.emit('chat message', msg)
     console.log(`message: ${msg}`)
   })
+
+  socket.on('join', async room => {
+    socket.join(room)
+    socket.emit('chat message', `Joined ${room} room`)
+  })
+
+  socket.on('leave', async room => {
+    socket.leave(room)
+    socket.emit('chat message', `Left ${room} room`)
+  })
 })
  
 server.listen(process.env.PORT, ()=>{
