@@ -106,10 +106,16 @@ body {
     bottom: 0;
     left: 0;
     right: 0;
-    display: flex;
+    /* display: flex; */
     height: 3rem;
     box-sizing: border-box;
     backdrop-filter: blur(10px);
+}
+.messages-form-hide {
+    display: none;
+}
+.messages-form-show {
+    display: flex;
 }
 
 #messages-input {
@@ -145,10 +151,6 @@ body {
 
 #messages-ul > li:nth-child(odd) {
     background: #efefef;
-}
-
-#messages-form {
-    display: none;
 }
 
 

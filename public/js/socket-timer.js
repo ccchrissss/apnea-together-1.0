@@ -21,15 +21,24 @@ messagesForm.addEventListener('submit', (e) => {
 roomJoinForm.addEventListener('submit', e => {
   e.preventDefault()
 
-  socket.emit('join', 'desiredRoom')
+  socket.emit('join', `${roomJoinInput.value}`)
+  console.log(`${roomJoinInput.value}`)
 
-  // if (roomJoinInput.value) {
-  //   currentRoomName.innerText = roomJoinInput.value
-  // }
+  messagesForm.classList.remove('messages-form-hide')
+  messagesForm.classList.add('messages-form-show')
+
+  if (roomJoinInput.value) {
+    currentRoomName.innerText = roomJoinInput.value
+  }
 })
 
 leaveCurrentRoom.addEventListener('click', () => {
-  socket.emit('leave', 'desiredRoom')
+  socket.emit('leave', `${currentRoomName.innerText}`)
+
+  messagesForm.classList.remove('messages-form-show')
+  messagesForm.classList.add('messages-form-hide')
+
+  currentRoomName.innerText = ''
 })
 
 
