@@ -12,6 +12,7 @@ const todoRoutes = require('./routes/todos')
 const helloRoutes = require('./routes/hello')
 const basicTimerRoutes = require('./routes/basic-timer')
 const socketTimerRoutes = require('./routes/socket-timer')
+// const desiredRoom = require('./routes/socker-timer')
 
 const { createServer } = require('node:http')
 const { join } = require('node:path')
@@ -54,17 +55,31 @@ app.use('/hello', helloRoutes)
 app.use('/basic-timer', basicTimerRoutes)
 app.use('/socket-timer', socketTimerRoutes)
 
+// app.use('/socket-timer/api', socketTimerRoutes)
+
+console.log(socketTimerRoutes)
+
+
+
+
+
+app.get('/socket-timer/api/get-desired-room', (req, res) => {
+
+  console.log('********** hello world *********')
+  console.log(`this is me accessing the desiredRoom: ${desiredRoom}`, req.desiredRoom)
+
+  res.json({ desiredRoom: req.desiredRoom })
+})
+
+
+
+
 
 
 io.on('connection', socket => {
   console.log('a user connected')
   socket.on('disconnect', () => {
     console.log('user disconnected')
-  })
-
-  socket.on('chat message', msg => {
-    io.emit('chat message', msg)
-    console.log(`message: ${msg}`)
   })
 
   socket.on('join', async room => {
@@ -75,6 +90,15 @@ io.on('connection', socket => {
   socket.on('leave', async room => {
     socket.leave(room)
     socket.emit('chat message', `Left ${room} room`)
+  })
+
+  // socket.on('chat message', msg => {
+  //   io.emit('chat message', msg)
+  //   console.log(`message: ${msg}`)
+  // })
+
+  socket.on('chat-message', msg => {
+    socket.to(`${desiredRoom}`).emit('chat message', msg)
   })
 })
  

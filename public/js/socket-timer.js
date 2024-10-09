@@ -30,6 +30,18 @@ roomJoinForm.addEventListener('submit', e => {
   if (roomJoinInput.value) {
     currentRoomName.innerText = roomJoinInput.value
   }
+
+  console.log(`currentRoomName: ${currentRoomName.innerText}`)
+  fetch('socket-timer/api/get-desired-room', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(currentRoomName)
+  })
+  .then(response => response.json())
+  .then(data => console.log('Success: ', data))
+  .catch(error => console.error('Error: ', error))
 })
 
 leaveCurrentRoom.addEventListener('click', () => {
@@ -40,6 +52,17 @@ leaveCurrentRoom.addEventListener('click', () => {
 
   currentRoomName.innerText = ''
 })
+
+fetch('/socket-timer/api/get-desired-room', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify(currentRoomName)
+})
+.then(response => response.json())
+.then(data => console.log('Success: ', data))
+.catch(error => console.error('Error: ', error))
 
 
 socket.on('chat message', msg => {
