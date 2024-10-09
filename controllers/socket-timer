@@ -2,6 +2,8 @@ module.exports = {
   getSocketTimer: (req, res) => {
     res.render('socket-timer.ejs')
   },
+
+  
   receiveData: (req, res) => {
     const receivedData = req.body
     console.log(receivedData)
@@ -10,6 +12,8 @@ module.exports = {
       message: 'Data received successfully', data: receivedData
     })
   },
+
+
   receiveDesiredRoom: (req, res) => {
     try {
       req.desiredRoom = req.body.desiredRoom
@@ -18,6 +22,5 @@ module.exports = {
       console.error('Error handling /api/get-desired-room', error)
       res.status(500).json({ error: 'Internal server error'})
     }
-
   }
 }

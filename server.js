@@ -66,12 +66,10 @@ console.log(socketTimerRoutes)
 app.get('/socket-timer/api/get-desired-room', (req, res) => {
 
   console.log('********** hello world *********')
-  console.log(`this is me accessing the desiredRoom: ${desiredRoom}`, req.desiredRoom)
+  console.log(`this is me accessing the desiredRoom: `, req.currentRoomNameFromJS)
 
   res.json({ desiredRoom: req.desiredRoom })
 })
-
-
 
 
 

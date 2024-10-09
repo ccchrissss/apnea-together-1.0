@@ -37,11 +37,20 @@ roomJoinForm.addEventListener('submit', e => {
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify(currentRoomName)
+    body: JSON.stringify({
+      'currentRoomNameFromJS': currentRoomName.innerText
+    })
   })
   .then(response => response.json())
   .then(data => console.log('Success: ', data))
   .catch(error => console.error('Error: ', error))
+
+  // ***** this kinda works
+  // fetch('/socket-timer/api/get-desired-room')
+  //   .then(response => response.json())
+  //   .then(data => console.log('Success: ', data, currentRoomName.innerText))
+  //   .catch(error => console.error('Error: ', error))
+
 })
 
 leaveCurrentRoom.addEventListener('click', () => {
@@ -53,16 +62,16 @@ leaveCurrentRoom.addEventListener('click', () => {
   currentRoomName.innerText = ''
 })
 
-fetch('/socket-timer/api/get-desired-room', {
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json',
-  },
-  body: JSON.stringify(currentRoomName)
-})
-.then(response => response.json())
-.then(data => console.log('Success: ', data))
-.catch(error => console.error('Error: ', error))
+// fetch('/socket-timer/api/get-desired-room', {
+//   method: 'POST',
+//   headers: {
+//     'Content-Type': 'application/json',
+//   },
+//   body: JSON.stringify(currentRoomName)
+// })
+// .then(response => response.json())
+// .then(data => console.log('Success: ', data))
+// .catch(error => console.error('Error: ', error))
 
 
 socket.on('chat message', msg => {
