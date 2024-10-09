@@ -7,6 +7,10 @@ router.get('/', socketTimerController.getSocketTimer)
 // router.post('/data', socketTimerController.receiveData)
 
 // router.post('/api/get-desired-room', socketTimerController.receiveDesiredRoom)
+
+
+
+//this is the one thats posting to the vs code terminal
 router.post('/api/get-desired-room', socketTimerController.receiveData)
 
 

@@ -21,6 +21,7 @@ const { Server } = require('socket.io')
 const server = createServer(app)
 const io = new Server(server)
 
+
 require('dotenv').config({path: './config/.env'})
 
 // Passport config
@@ -57,19 +58,17 @@ app.use('/socket-timer', socketTimerRoutes)
 
 // app.use('/socket-timer/api', socketTimerRoutes)
 
-console.log(socketTimerRoutes)
 
 
 
 
+// app.get('/socket-timer/api/get-desired-room', (req, res) => {
 
-app.get('/socket-timer/api/get-desired-room', (req, res) => {
+//   console.log('********** hello world *********')
+//   console.log(`this is me accessing the desiredRoom: `, req.currentRoomNameFromJS)
 
-  console.log('********** hello world *********')
-  console.log(`this is me accessing the desiredRoom: `, req.currentRoomNameFromJS)
-
-  res.json({ desiredRoom: req.desiredRoom })
-})
+//   // res.json({ desiredRoom: req.desiredRoom })
+// })
 
 
 
@@ -82,6 +81,14 @@ io.on('connection', socket => {
 
   socket.on('join', async room => {
     socket.join(room)
+
+    app.get('/socket-timer/api/get-desired-room', (req, res) => {
+
+      // console.log(`this is me accessing the desiredRoom: `, req.currentRoomNameFromJS)
+
+    })
+
+
     socket.emit('chat message', `Joined ${room} room`)
   })
 
