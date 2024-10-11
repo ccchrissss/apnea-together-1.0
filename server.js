@@ -84,7 +84,7 @@ io.on('connection', socket => {
 
     app.get('/socket-timer/api/get-desired-room', (req, res) => {
 
-      // console.log(`this is me accessing the desiredRoom: `, req.currentRoomNameFromJS)
+      console.log(`this is me accessing the desiredRoom: `, req.currentRoomNameFromJS)
 
     })
 

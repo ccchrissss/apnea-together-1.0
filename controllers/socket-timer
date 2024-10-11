@@ -4,9 +4,11 @@ module.exports = {
   },
 
   
+  // this is the original method that was posting to the server-side terminal
   receiveData: (req, res) => {
     const receivedData = req.body
     console.log(receivedData)
+    console.log('yooooo')
 
     res.json( {
       message: 'Data received successfully', data: receivedData
@@ -14,10 +16,14 @@ module.exports = {
   },
 
 
+  // now i am using this method
   receiveDesiredRoom: (req, res) => {
     try {
-      req.desiredRoom = req.body.desiredRoom
-      res.json({ message: 'Desired Room Received', receivedDesiredRoom: req.body.desiredRoom })
+      // req.desiredRoom = req.body.desiredRoom
+      // req.desiredRoom = req.body
+      const desiredRoomName = req.body.currentRoomNameFromJS
+      console.log(desiredRoomName)
+      res.json({ message: 'Desired Room Received', desiredRoomName })
     } catch (error) {
       console.error('Error handling /api/get-desired-room', error)
       res.status(500).json({ error: 'Internal server error'})

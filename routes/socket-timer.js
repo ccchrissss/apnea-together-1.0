@@ -10,8 +10,10 @@ router.get('/', socketTimerController.getSocketTimer)
 
 
 
-//this is the one thats posting to the vs code terminal
-router.post('/api/get-desired-room', socketTimerController.receiveData)
+//this is the route of the one thats posting to the vs code terminal
+// router.post('/api/get-desired-room', socketTimerController.receiveData)
+
+router.post('/api/get-desired-room', socketTimerController.receiveDesiredRoom)
 
 
 module.exports = router
