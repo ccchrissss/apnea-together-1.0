@@ -13,7 +13,7 @@ let leaveCurrentRoom = document.querySelector('#leave-current-room')
 messagesForm.addEventListener('submit', (e) => {
   e.preventDefault();
   if (messagesInput.value) {
-    socket.emit('chat message', messagesInput.value);
+    socket.emit('chat message room', messagesInput.value);
     messagesInput.value = '';
   }
 });
@@ -92,3 +92,9 @@ socket.on('chat message', msg => {
   window.scrollTo(0, document.body.scrollHeight)
 })
 
+socket.on('chat message room', msg => {
+  const item = document.createElement('li')
+  item.textContent = msg
+  messages.appendChild(item)
+  window.scrollTo(0, document.body.scrollHeight)
+})

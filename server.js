@@ -112,6 +112,11 @@ io.on('connection', socket => {
       io.emit('chat message', msg)
       console.log(`message: ${msg}`)
     })
+
+    socket.on('chat message room', msg => {
+      io.to(`${desiredRoom}`).emit('chat message room', msg)
+      console.log(`message room: ${msg}`)
+    })
   })
 
   socket.on('leave', async room => {
