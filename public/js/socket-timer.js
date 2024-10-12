@@ -22,7 +22,7 @@ roomJoinForm.addEventListener('submit', e => {
   e.preventDefault()
 
   socket.emit('join', `${roomJoinInput.value}`)
-  console.log(`${roomJoinInput.value}`)
+  // console.log(`${roomJoinInput.value}`)
 
   messagesForm.classList.remove('messages-form-hide')
   messagesForm.classList.add('messages-form-show')
@@ -32,18 +32,18 @@ roomJoinForm.addEventListener('submit', e => {
   }
 
   console.log(`currentRoomName: ${currentRoomName.innerText}`)
-  fetch('socket-timer/api/get-desired-room', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      'currentRoomNameFromJS': currentRoomName.innerText
-    })
-  })
-  .then(response => response.json())
-  .then(data => console.log('Success POST: ', data))
-  .catch(error => console.error('Error: ', error))
+  // fetch('socket-timer/api/get-desired-room', {
+  //   method: 'POST',
+  //   headers: {
+  //     'Content-Type': 'application/json',
+  //   },
+  //   body: JSON.stringify({
+  //     'currentRoomNameFromJS': currentRoomName.innerText
+  //   })
+  // })
+  // .then(response => response.json())
+  // .then(data => console.log('Success POST: ', data))
+  // .catch(error => console.error('Error: ', error))
 
 
   // fetch('socket-timer/api/get-desired-room', {
