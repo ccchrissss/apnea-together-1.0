@@ -42,8 +42,19 @@ roomJoinForm.addEventListener('submit', e => {
     })
   })
   .then(response => response.json())
-  .then(data => console.log('Success: ', data))
+  .then(data => console.log('Success POST: ', data))
   .catch(error => console.error('Error: ', error))
+
+
+  // fetch('socket-timer/api/get-desired-room', {
+  //   method: 'GET',
+  //   headers: {
+  //     'Content-Type': 'application/json',
+  //   }
+  // })
+  // .then(response => response.json())
+  // .then(data => console.log('Success GET: ', data))
+  // .catch(error => console.error('Error: ', error))
 
   // ***** this kinda works
   // fetch('/socket-timer/api/get-desired-room')

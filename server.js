@@ -79,17 +79,39 @@ io.on('connection', socket => {
     console.log('user disconnected')
   })
 
+  let desiredRoom = ''
+
+
+
   socket.on('join', async room => {
     socket.join(room)
 
-    app.get('/socket-timer/api/get-desired-room', (req, res) => {
+    desiredRoom = room
+    console.log('room: ', room)
 
-      console.log(`this is me accessing the desiredRoom: `, req.currentRoomNameFromJS)
+    // app.get('/socket-timer/api/get-desired-room', (req, res) => {
 
+    //   console.log(`this is me accessing the desiredRoom: `, 
+    //     req.body,
+    //     res.body,
+    //     req.currentRoomNameFromJS)
+    // })
+
+    // app.post('/socket-timer/api/get-desired-room', (req, res) => {
+
+    //   console.log('app.post: ',
+    //     req.body,
+    //     res.body
+    //   )
+    // })
+
+
+    socket.emit('chat message', `* Joined ${room} room *`)
+
+    socket.on('chat message', msg => {
+      io.emit('chat message', msg)
+      console.log(`message: ${msg}`)
     })
-
-
-    socket.emit('chat message', `Joined ${room} room`)
   })
 
   socket.on('leave', async room => {
@@ -101,10 +123,6 @@ io.on('connection', socket => {
   //   io.emit('chat message', msg)
   //   console.log(`message: ${msg}`)
   // })
-
-  socket.on('chat-message', msg => {
-    socket.to(`${desiredRoom}`).emit('chat message', msg)
-  })
 })
  
 server.listen(process.env.PORT, ()=>{
