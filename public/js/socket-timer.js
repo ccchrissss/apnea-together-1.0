@@ -13,7 +13,7 @@ let leaveCurrentRoom = document.querySelector('#leave-current-room')
 messagesForm.addEventListener('submit', (e) => {
   e.preventDefault();
   if (messagesInput.value) {
-    socket.emit('chat message', messagesInput.value);
+    socket.emit('chat message room', messagesInput.value);
     messagesInput.value = '';
   }
 });
@@ -22,7 +22,7 @@ roomJoinForm.addEventListener('submit', e => {
   e.preventDefault()
 
   socket.emit('join', `${roomJoinInput.value}`)
-  console.log(`${roomJoinInput.value}`)
+  // console.log(`${roomJoinInput.value}`)
 
   messagesForm.classList.remove('messages-form-hide')
   messagesForm.classList.add('messages-form-show')
@@ -32,18 +32,29 @@ roomJoinForm.addEventListener('submit', e => {
   }
 
   console.log(`currentRoomName: ${currentRoomName.innerText}`)
-  fetch('socket-timer/api/get-desired-room', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      'currentRoomNameFromJS': currentRoomName.innerText
-    })
-  })
-  .then(response => response.json())
-  .then(data => console.log('Success: ', data))
-  .catch(error => console.error('Error: ', error))
+  // fetch('socket-timer/api/get-desired-room', {
+  //   method: 'POST',
+  //   headers: {
+  //     'Content-Type': 'application/json',
+  //   },
+  //   body: JSON.stringify({
+  //     'currentRoomNameFromJS': currentRoomName.innerText
+  //   })
+  // })
+  // .then(response => response.json())
+  // .then(data => console.log('Success POST: ', data))
+  // .catch(error => console.error('Error: ', error))
+
+
+  // fetch('socket-timer/api/get-desired-room', {
+  //   method: 'GET',
+  //   headers: {
+  //     'Content-Type': 'application/json',
+  //   }
+  // })
+  // .then(response => response.json())
+  // .then(data => console.log('Success GET: ', data))
+  // .catch(error => console.error('Error: ', error))
 
   // ***** this kinda works
   // fetch('/socket-timer/api/get-desired-room')
@@ -81,3 +92,9 @@ socket.on('chat message', msg => {
   window.scrollTo(0, document.body.scrollHeight)
 })
 
+socket.on('chat message room', msg => {
+  const item = document.createElement('li')
+  item.textContent = msg
+  messages.appendChild(item)
+  window.scrollTo(0, document.body.scrollHeight)
+})
