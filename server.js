@@ -121,7 +121,10 @@ io.on('connection', socket => {
 
   socket.on('leave', async room => {
     socket.leave(room)
-    socket.emit('chat message', `Left ${room} room`)
+    // socket.emit('chat message', `* Left ${room} room *`)
+
+    socket.to(room).emit(`chat message`, `* A user has left ${room} room *` )
+    socket.emit('chat message', `* Left ${room} room *`)
   })
 
   // socket.on('chat message', msg => {
