@@ -106,7 +106,8 @@ io.on('connection', socket => {
     // })
 
 
-    socket.emit('chat message', `* Joined ${room} room *`)
+    socket.emit('chat message', `* You joined ${room} room *`)
+    socket.to(desiredRoom).emit(`chat message`, `* A user has joined ${room} room *` )
 
     socket.on('chat message', msg => {
       io.emit('chat message', msg)
@@ -123,8 +124,10 @@ io.on('connection', socket => {
     socket.leave(room)
     // socket.emit('chat message', `* Left ${room} room *`)
 
+    // tells 
     socket.to(room).emit(`chat message`, `* A user has left ${room} room *` )
-    socket.emit('chat message', `* Left ${room} room *`)
+    // tells current user that they have left the room
+    socket.emit('chat message', `* You left ${room} room *`)
   })
 
   // socket.on('chat message', msg => {
